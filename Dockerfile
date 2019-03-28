@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:5.6-fpm-alpine
 
 # docker-entrypoint.sh dependencies
 RUN apk add --no-cache \
