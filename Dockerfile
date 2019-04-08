@@ -11,12 +11,14 @@ RUN apk add --no-cache \
 RUN set -ex; \
 	\
 	apk add --no-cache --virtual .build-deps \
+	        gettext-dev \
+        	icu-dev \
 		libjpeg-turbo-dev \
 		libpng-dev \
 	; \
 	\
 	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
-	docker-php-ext-install gd mysqli opcache zip; \
+	docker-php-ext-install gd gettext intl mysqli opcache zip; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
