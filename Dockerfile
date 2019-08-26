@@ -15,9 +15,12 @@ RUN set -ex; \
         	icu-dev \
 		libjpeg-turbo-dev \
 		libpng-dev \
+		zlib-dev \
+		libzip-dev \
 	; \
 	\
 	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
+	docker-php-ext-configure zip --with-libzip; \
 	docker-php-ext-install gd gettext intl mysqli opcache zip; \
 	\
 	runDeps="$( \
